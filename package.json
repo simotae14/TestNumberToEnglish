@@ -1,0 +1,23 @@
+{
+  "name": "testnumbertoenglish",
+  "version": "1.0.0",
+  "description": "project to convert a number into words",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simotae14/TestNumberToEnglish.git"
+  },
+  "keywords": [
+    "numberToWords"
+  ],
+  "author": "Simone Taeggi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simotae14/TestNumberToEnglish/issues"
+  },
+  "homepage": "https://github.com/simotae14/TestNumberToEnglish#readme"
+}
