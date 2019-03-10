@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/api/greeting', (req, res) => {
-  res.send({ greeting: 'Hello From Simone' });
+  res.send({ greeting: 'Welcome, Convert your number' });
 });
 
 // api that convert the digits

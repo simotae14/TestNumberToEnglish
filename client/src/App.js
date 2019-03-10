@@ -54,20 +54,21 @@ class App extends Component {
             this.handleOpenSnackbar();
           }
         });
+      } else {
+        const responseData = await response.json();
+        this.setState(({ numberInDigits, latest }) => ({
+          latest: [
+            {
+              numberInDigits,
+              numberInWords: responseData.numberInWords,
+              id: Date.now()
+            },
+            ...latest
+          ],
+          numberInDigits: '',
+          numberInWords: responseData.numberInWords
+        }));
       }
-      const responseData = await response.json();
-      this.setState(({ numberInDigits, latest }) => ({
-        latest: [
-          ...latest,
-          {
-            numberInDigits,
-            numberInWords: responseData.numberInWords,
-            id: Date.now()
-          }
-        ],
-        numberInDigits: '',
-        numberInWords: responseData.numberInWords
-      }));
     } catch(e) {
       console.log(e);
       this.setState({
@@ -91,6 +92,11 @@ class App extends Component {
     }
     this.setState({ openSnackbar: false });
   };
+  handleDeleteLast = (id) => {
+    this.setState(({ latest }) => ({
+      latest: latest.filter(item => item.id !== id)
+    }));
+  }
   render() {
     return (
       <Fragment>
@@ -100,7 +106,9 @@ class App extends Component {
           greeting={this.state.greeting}
           handleChangeNumber={this.handleChangeNumber}
           handleConvertNumber={this.handleConvertNumber}
+          handleDeleteLast={this.handleDeleteLast}
           numberInDigits={this.state.numberInDigits}
+          latest={this.state.latest}
         />
         <Snackbar
           anchorOrigin={{
@@ -114,6 +122,7 @@ class App extends Component {
           <MySnackbarContentWrapper
             variant="error"
             message={this.state.errorMessage}
+            handleCloseSnackbar={this.handleCloseSnackbar}
           />
         </Snackbar>
       </Fragment>
