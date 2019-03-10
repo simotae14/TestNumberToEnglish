@@ -3,6 +3,22 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  // state of the component
+  state = {
+    greeting: ''
+  }
+  componentDidMount() {
+    this.callApiGreeting()
+      .then(res => this.setState({ greeting: res.greeting }))
+      .catch(err => console.log(err));
+  }
+  callApiGreeting = async () => {
+    const response = await fetch('api/greeting');
+    const body = await response.json();
+    // check error
+    if (response.status !== 200) throw Error(body.message);
+    return body;
+  }
   render() {
     return (
       <div className="App">
@@ -20,6 +36,9 @@ class App extends Component {
             Learn React
           </a>
         </header>
+        <p>
+          {this.state.greeting}
+        </p>
       </div>
     );
   }
