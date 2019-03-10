@@ -14,10 +14,13 @@ app.get('/api/greeting', (req, res) => {
 
 // api that convert the digits
 app.post('/api/convert', (req, res) => {
-    console.log(req.body);
     const numberInDigits = req.body.numberInDigits;
-    const numberInWords = numberToEnglish(numberInDigits);
-    console.log('in words', numberInWords);
+    let numberInWords = '';
+    try {
+        numberInWords = numberToEnglish(numberInDigits);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
     res.send({
         numberInDigits,
         numberInWords

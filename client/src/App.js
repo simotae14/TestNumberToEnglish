@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import {
   CssBaseline,
-  withStyles,
-  Typography
+//  withStyles
 } from '@material-ui/core';
 
 import Header from './components/Header';
@@ -32,13 +31,38 @@ class App extends Component {
   }
   handleConvertNumber = async e => {
     e.preventDefault();
-    const response = await fetch('/api/convert', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ numberInDigits: this.state.numberInDigits })
-    });
+    try {
+      const response = await fetch('/api/convert', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ numberInDigits: this.state.numberInDigits })
+      });
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+      const responseData = await response.json();
+      this.setState(({ numberInDigits, latest }) => ({
+        latest: [
+          ...latest,
+          {
+            numberInDigits,
+            numberInWords: responseData.numberInWords,
+            id: Date.now()
+          }
+        ],
+        numberInDigits: '',
+        numberInWords: responseData.numberInWords
+      }));
+    } catch(e) {
+      console.log(e);
+      this.setState({
+        numberInDigits: ''
+      });
+    }
+
+    /*
     const responseData = await response.json();
     this.setState(({ numberInDigits, latest }) => ({
       latest: [
@@ -52,6 +76,7 @@ class App extends Component {
       numberInDigits: '',
       numberInWords: responseData.numberInWords
     }));
+    */
   }
   handleChangeNumber = ({ target: { name, value } }) => {
     this.setState({
