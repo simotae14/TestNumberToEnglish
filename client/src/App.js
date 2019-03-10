@@ -6,14 +6,16 @@ import {
 } from '@material-ui/core';
 
 import Header from './components/Header';
+import Form from './components/Form';
 
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
   // state of the component
   state = {
-    greeting: ''
+    greeting: '',
+    latest: [],
+    numberInDigits: ''
   }
   componentDidMount() {
     this.callApiGreeting()
@@ -27,15 +29,21 @@ class App extends Component {
     if (response.status !== 200) throw Error(body.message);
     return body;
   }
+  handleChangeNumber = ({ target: { name, value } }) => {
+    this.setState({
+      [name]: value
+    });
+  }
   render() {
     return (
       <Fragment>
         <CssBaseline />
         <Header />
-
-        <Typography variant='display1' align='center' gutterBottom>
-          {this.state.greeting}
-        </Typography>
+        <Form
+          greeting={this.state.greeting}
+          handleChangeNumber={this.handleChangeNumber}
+          numberInDigits={this.state.numberInDigits}
+        />
       </Fragment>
     );
   }
