@@ -18,13 +18,15 @@ app.post('/api/convert', (req, res) => {
     let numberInWords = '';
     try {
         numberInWords = numberToEnglish(numberInDigits);
+        res.send({
+            numberInDigits,
+            numberInWords
+        });
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        console.log(error.message);
+        res.status(500).json({msg: error.message});
     }
-    res.send({
-        numberInDigits,
-        numberInWords
-    });
+
   });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

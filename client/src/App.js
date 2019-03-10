@@ -1,11 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import {
   CssBaseline,
+  Snackbar
 //  withStyles
 } from '@material-ui/core';
 
 import Header from './components/Header';
 import Form from './components/Form';
+import MySnackbarContentWrapper from './components/MySnackbarContentWrapper';
 
 import './App.css';
 
@@ -15,7 +17,9 @@ class App extends Component {
     greeting: '',
     latest: [],
     numberInDigits: '',
-    numberInWords: ''
+    numberInWords: '',
+    errorMessage: '',
+    openSnackbar: false
   }
   componentDidMount() {
     this.callApiGreeting()
@@ -40,7 +44,16 @@ class App extends Component {
         body: JSON.stringify({ numberInDigits: this.state.numberInDigits })
       });
       if (!response.ok) {
-        throw Error(response.statusText);
+        response.clone().json().then((result) => {
+          console.log(result);
+          if (result.msg) {
+            this.setState({
+              numberInDigits: '',
+              errorMessage: `${this.state.numberInDigits}: ${result.msg}`
+            });
+            this.handleOpenSnackbar();
+          }
+        });
       }
       const responseData = await response.json();
       this.setState(({ numberInDigits, latest }) => ({
@@ -58,31 +71,26 @@ class App extends Component {
     } catch(e) {
       console.log(e);
       this.setState({
-        numberInDigits: ''
+        numberInDigits: '',
+        errorMessage: e.message
       });
+      this.handleOpenSnackbar();
     }
-
-    /*
-    const responseData = await response.json();
-    this.setState(({ numberInDigits, latest }) => ({
-      latest: [
-        ...latest,
-        {
-          numberInDigits,
-          numberInWords: responseData.numberInWords,
-          id: Date.now()
-        }
-      ],
-      numberInDigits: '',
-      numberInWords: responseData.numberInWords
-    }));
-    */
   }
   handleChangeNumber = ({ target: { name, value } }) => {
     this.setState({
       [name]: value
     });
   }
+  handleOpenSnackbar = () => {
+    this.setState({ openSnackbar: true });
+  }
+  handleCloseSnackbar = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    this.setState({ openSnackbar: false });
+  };
   render() {
     return (
       <Fragment>
@@ -94,6 +102,20 @@ class App extends Component {
           handleConvertNumber={this.handleConvertNumber}
           numberInDigits={this.state.numberInDigits}
         />
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          open={this.state.openSnackbar}
+          autoHideDuration={3000}
+          onClose={this.handleCloseSnackbar}
+        >
+          <MySnackbarContentWrapper
+            variant="error"
+            message={this.state.errorMessage}
+          />
+        </Snackbar>
       </Fragment>
     );
   }
