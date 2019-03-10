@@ -94,6 +94,15 @@ describe('Test Convert Numbers', () => {
         'This is not a number!',
       );
     });
+    it('A number with multi decimal points should throw error', () => {
+      assert.throws(
+        () => {
+          numberToEnglish('10.11.11');
+        },
+        Error,
+        'This is not a number!',
+      );
+    });
   });
 
   context('With decimal numbers', () => {
