@@ -53,6 +53,7 @@ Also, be sure to have `git` available in your PATH, `npm` might need it.
     $ git clone https://github.com/simotae14/TestNumberToEnglish.git
     $ cd TestNumberToEnglish
     $ npm install
+    $ npm i nodemon -g
     $ cd client
     $ npm install
 

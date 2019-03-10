@@ -5,9 +5,9 @@ import {
 //  withStyles
 } from '@material-ui/core';
 
-import Header from './components/Header';
-import Form from './components/Form';
-import MySnackbarContentWrapper from './components/MySnackbarContentWrapper';
+import Header from './Header';
+import Form from './Form';
+import MySnackbarContentWrapper from './MySnackbarContentWrapper';
 
 import './App.css';
 
