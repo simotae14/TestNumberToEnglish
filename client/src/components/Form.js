@@ -71,7 +71,10 @@ class Form extends Component {
                         <List>
                             {latest.slice(0, 10).map(({ id, numberInDigits, numberInWords }) =>
                                 <ListItem key={id}>
-                                    <ListItemText primary={`${numberInDigits} in english is ${numberInWords}`} />
+                                    <ListItemText
+                                        primary={numberInWords}
+                                        secondary={`is ${numberInDigits} in english`}
+                                    />
                                     <ListItemSecondaryAction>
                                         <IconButton
                                             color='primary'
