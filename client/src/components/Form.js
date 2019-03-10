@@ -12,6 +12,7 @@ class Form extends Component {
         const {
             numberInDigits,
             handleChangeNumber,
+            handleConvertNumber,
             greeting
         } = this.props;
         return (
@@ -19,7 +20,7 @@ class Form extends Component {
                 <Typography variant='display1' align='center' gutterBottom>
                     {greeting}
                 </Typography>
-                <form onSubmit={this.handleConvert}>
+                <form onSubmit={handleConvertNumber}>
                     <TextField
                         name='numberInDigits'
                         label='Insert the number'
@@ -31,6 +32,7 @@ class Form extends Component {
                         type='submit'
                         color='primary'
                         variant='raised'
+                        disabled={!numberInDigits}
                     >
                         Submit
                     </Button>
@@ -42,6 +44,7 @@ class Form extends Component {
 
 Form.propTypes = {
     handleChangeNumber: PropTypes.func.isRequired,
+    handleConvertNumber: PropTypes.func.isRequired,
     numberInDigits: PropTypes.string.isRequired,
     greeting: PropTypes.string.isRequired
 };
