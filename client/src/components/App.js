@@ -25,6 +25,16 @@ class App extends Component {
     this.callApiGreeting()
       .then(res => this.setState({ greeting: res.greeting }))
       .catch(err => console.log(err));
+
+    const localStorageRef = localStorage.getItem('latest');
+    if (localStorageRef) {
+        this.setState({
+          latest: JSON.parse(localStorageRef)
+        });
+    }
+  }
+  componentDidUpdate() {
+    localStorage.setItem('latest', JSON.stringify(this.state.latest));
   }
   callApiGreeting = async () => {
     const response = await fetch('api/greeting');
@@ -68,6 +78,7 @@ class App extends Component {
           numberInDigits: '',
           numberInWords: responseData.numberInWords
         }));
+        localStorage.setItem('latest', JSON.stringify(this.state.latest));
       }
     } catch(e) {
       console.log(e);
