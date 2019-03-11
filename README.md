@@ -2,7 +2,7 @@
 
 ## Requirements
 
-For development, you will only need Node.js and Npm installed on your environement.
+For development, you will only need Node.js and Npm installed on your environment.
 And please use the appropriate [Editorconfig](http://editorconfig.org/) plugin for your Editor (not mandatory).
 
 ### Node
@@ -61,6 +61,11 @@ Also, be sure to have `git` available in your PATH, `npm` might need it.
 
     $ npm run dev
 
+## Test of the numberToWords function
+
+    $ npm run test
+
+
 ## Simple build for production
 
     $ npm run build
@@ -68,9 +73,25 @@ Also, be sure to have `git` available in your PATH, `npm` might need it.
 
 ## Languages & tools
 
+### CSS Framework
+
+- [Material UI](https://material-ui.com/)
+
 ### JavaScript
 
 - [React](http://facebook.github.io/react) is used for UI.
+
+### Test functionality
+
+- [Mocha](https://mochajs.org/) to run the function tests.
+
+### Deploy
+
+- [Heroku](https://www.heroku.com/)
+
+### Documentation React part
+
+- [react-docgen](https://github.com/reactjs/react-docgen)
 
 ### Static server with Livereload
 

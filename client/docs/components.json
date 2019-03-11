@@ -1,0 +1,203 @@
+[
+  {
+    "description": "",
+    "displayName": "App",
+    "methods": [
+      {
+        "name": "callApiGreeting",
+        "docblock": null,
+        "modifiers": [
+          "async"
+        ],
+        "params": [],
+        "returns": null
+      },
+      {
+        "name": "handleConvertNumber",
+        "docblock": null,
+        "modifiers": [
+          "async"
+        ],
+        "params": [
+          {
+            "name": "e",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "handleChangeNumber",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "{ target: { name, value } }",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "handleOpenSnackbar",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      },
+      {
+        "name": "handleCloseSnackbar",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "event",
+            "type": null
+          },
+          {
+            "name": "reason",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "handleDeleteLast",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "id",
+            "type": null
+          }
+        ],
+        "returns": null
+      }
+    ],
+    "filename": "/components/App.js"
+  },
+  {
+    "description": "",
+    "displayName": "Form",
+    "methods": [],
+    "props": {
+      "handleChangeNumber": {
+        "type": {
+          "name": "func"
+        },
+        "required": true,
+        "description": ""
+      },
+      "handleConvertNumber": {
+        "type": {
+          "name": "func"
+        },
+        "required": true,
+        "description": ""
+      },
+      "handleDeleteLast": {
+        "type": {
+          "name": "func"
+        },
+        "required": true,
+        "description": ""
+      },
+      "numberInDigits": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": ""
+      },
+      "greeting": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": ""
+      },
+      "latest": {
+        "type": {
+          "name": "array"
+        },
+        "required": true,
+        "description": ""
+      },
+      "classes": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": ""
+      }
+    },
+    "filename": "/components/Form.js"
+  },
+  {
+    "description": "",
+    "displayName": "MySnackbarContent",
+    "methods": [],
+    "props": {
+      "classes": {
+        "type": {
+          "name": "object"
+        },
+        "required": true,
+        "description": ""
+      },
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "message": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": ""
+      },
+      "handleCloseSnackbar": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": ""
+      },
+      "variant": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'success'",
+              "computed": false
+            },
+            {
+              "value": "'warning'",
+              "computed": false
+            },
+            {
+              "value": "'error'",
+              "computed": false
+            },
+            {
+              "value": "'info'",
+              "computed": false
+            }
+          ]
+        },
+        "required": true,
+        "description": ""
+      }
+    },
+    "filename": "/components/MySnackbarContentWrapper.js"
+  },
+  {
+    "description": "",
+    "displayName": "Header",
+    "methods": [],
+    "filename": "/components/Header.js"
+  }
+]
