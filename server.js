@@ -1,11 +1,11 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const path = require('path');
-const {
+let express = require('express');
+let bodyParser = require('body-parser');
+let path = require('path');
+let {
     numberToEnglish,
 } = require('./numberToWords');
-const app = express();
-const port = process.env.PORT || 5000;
+let app = express();
+let port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -39,3 +39,5 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
+
+module.exports = app; // for testing
