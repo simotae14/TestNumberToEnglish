@@ -32,7 +32,10 @@
   },
   "dependencies": {
     "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
-    "react-app-polyfill": "^0.2.2"
+    "react-app-polyfill": "^0.2.2",
+    "redoc": "^2.0.0-rc.2",
+    "swagger-jsdoc": "^3.2.7"
   }
 }
