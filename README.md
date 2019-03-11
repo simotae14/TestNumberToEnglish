@@ -23,6 +23,8 @@ and you can see the JSON result in
     http://localhost:5000/docs/swagger.json
 and the documentation in
     http://localhost:5000/docs
+- tested the Components using the packages 'react-test-renderer' and 'enzyme'
+
 
 ### Node
 
@@ -77,7 +79,10 @@ below.
 
 ### Test functionality
 
-- [Mocha](https://mochajs.org/) to run the function tests.
+- [Mocha](https://mochajs.org/) to run the function tests and the APIs tests.
+- [Chai](https://www.chaijs.com/) to run the APIs tests.
+- [Jest](https://jestjs.io/docs/en/getting-started) to run the Components tests.
+- [react-test-renderer](https://reactjs.org/docs/test-renderer.html) to test the Components
 
 ### Deploy
 
@@ -85,7 +90,10 @@ below.
 
 ### Documentation React part
 
-- [react-docgen](https://github.com/reactjs/react-docgen)
+- [react-docgen](https://github.com/reactjs/react-docgen) for the React Documentation
+- [swagger-jsdoc](https://www.npmjs.com/package/swagger-jsdoc) for the APIs documentation
+- [redoc](https://rebilly.github.io/ReDoc/) for the APIs documentation
+
 
 ### Static server with Livereload
 
